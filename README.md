@@ -45,48 +45,47 @@ Achieved a 100% serverless deployment with no need to manage or maintain backend
 ## Deployment Steps
 
 <h4>1. Create an S3 Bucket</h4>
-Go to AWS S3 and create a bucket named exactly as your domain (e.g., example.com)
-Uncheck “Block all public access”
-Enable Static website hosting
+Go to AWS S3 and create a bucket named exactly as your domain (e.g., example.com)<br>
+Uncheck “Block all public access”<br>
+Enable Static website hosting<br>
 Upload your website files (HTML, CSS, JS)
 
 <h4>2. Set Bucket Policy for Public Access</h4>
-Paste the following policy under the bucket permissions:
+Paste the following policy under the bucket permissions:<br>
 
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "PublicReadGetObject",
-      "Effect": "Allow",
-      "Principal": "*",
-      "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::example.com/*"
-    }
-  ]
+{<br>
+  "Version": "2012-10-17",<br>
+  "Statement": [<br>
+    {<br>
+      "Sid": "PublicReadGetObject",<br>
+      "Effect": "Allow",<br>
+      "Principal": "*",<br>
+      "Action": "s3:GetObject",<br>
+      "Resource": "arn:aws:s3:::example.com/*"<br>
+    }<br>
+  ]<br>
 }
 
 <h4>3. Request SSL Certificate</h4>
-Navigate to AWS Certificate Manager (ACM)
-Select N. Virginia (us-east-1) region
-Request a public certificate for your domain (e.g., example.com, www.example.com)
+Navigate to AWS Certificate Manager (ACM)<br>
+Select N. Virginia (us-east-1) region<br>
+Request a public certificate for your domain (e.g., example.com, www.example.com)<br>
 Complete DNS validation via Route 53
 
 <h4>4. Create a CloudFront Distribution</h4>
-Origin domain: your S3 bucket static website endpoint (not the REST API endpoint)
-Viewer protocol policy: Redirect HTTP to HTTPS
-Alternate domain name (CNAME): example.com
-Attach the certificate from ACM (N. Virginia)
-Optional: Set custom error responses (e.g., 404.html)
+Origin domain: your S3 bucket static website endpoint (not the REST API endpoint)<br>
+Viewer protocol policy: Redirect HTTP to HTTPS<br>
+Alternate domain name (CNAME): example.com<br>
+Attach the certificate from ACM (N. Virginia)<br>
 
-<h4>5. Set Up Route 53 (DNS)</h4>h4>
-Register a domain or use an existing one in Route 53
-Create an A record:
-Record type: A – IPv4 address
-Routing policy: Simple
-Alias: Yes
+<h4>5. Set Up Route 53 (DNS)</h4>
+Register a domain or use an existing one in Route 53<br>
+Create an A record:<br>
+Record type: A – IPv4 address<br>
+Routing policy: Simple<br>
+Alias: Yes<br>
 Alias Target: your CloudFront distribution URL
 
-<h4>6. Test the Deployment</h4>h4>
-Visit https://your-domain.com
+<h4>6. Test the Deployment</h4>
+Visit https://your-domain.com<br>
 Ensure it loads over HTTPS and serves from CloudFront
