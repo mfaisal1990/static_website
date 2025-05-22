@@ -10,29 +10,31 @@ Utilized S3’s static website hosting feature to serve HTML, CSS, JavaScript, a
 
 <h4>2. Custom Domain Configuration</h4>
 Registered a custom domain using Amazon Route 53.<br>
-Mapped the domain to the S3 bucket using Alias or A records for seamless access through a user-friendly URL. -->
 
-<h4>3. HTTPS Enabled with SSL</h4>
+<h4>3. Domain Privacy and WHOIS Protection</h4>
+Enabled WHOIS privacy protection to prevent exposure of personal details used during domain registration.
+
+<h4>4. HTTPS Enabled with SSL</h4>
 Requested and provisioned a free SSL certificate using AWS Certificate Manager (ACM).<br>
-Secured the website with HTTPS, improving user trust and SEO compatibility.
+Set up the corresponding CNAME record and associated it with the ACM-issued SSL certificate to enable secure HTTPS access, improving user trust and SEO compatibility.
 
-<h4>4. Optimized Content Delivery with CloudFront</h4>
+<h4>5. Optimized Content Delivery with CloudFront</h4>
 Integrated Amazon CloudFront as a Content Delivery Network (CDN) to cache and distribute website content globally with low latency.<br>
 
-<h4>5. Improved Performance and SEO</h4>
+<h4>6. Improved Performance and SEO</h4>
 Leveraged CloudFront’s edge locations for faster content delivery across different regions.<br>
 Enforced HTTPS and redirected HTTP traffic to secure connections for better search engine optimization and data privacy.
 
-<h4>6. Domain Privacy and WHOIS Protection</h4>
-Enabled WHOIS privacy protection to prevent exposure of personal details used during domain registration.
-
-<h4>7. Cache Invalidation and TTL Configuration</h4>
+<h4>7. Cache Invalidation</h4>
 Performed cache invalidations as needed during website updates to ensure delivery of the latest content.
 
-<h4>8. Cost-Efficient Hosting Solution</h4>
+<h4>8. Mapping CNAME and A Records in Route 53</h4>
+Configured the domain in the Route 53 Hosted Zone by mapping an Alias (A) record to the CloudFront distribution for seamless global access with low latency. 
+
+<h4>9. Cost-Efficient Hosting Solution</h4>
 Took advantage of AWS’s pay-as-you-go model for S3 and CloudFront to keep hosting affordable for personal or portfolio projects.
 
-<h4>9. Fully Serverless Architecture</h4>
+<h4>10. Fully Serverless Architecture</h4>
 Achieved a 100% serverless deployment with no need to manage or maintain backend servers, resulting in reduced operational overhead.
 
 ## Tech Stack
