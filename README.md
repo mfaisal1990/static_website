@@ -53,21 +53,22 @@ Enable Static website hosting<br>
 Upload your website files (HTML, CSS, JS)
 
 <h4>2. Set Bucket Policy for Public Access</h4>
-Paste the following policy under the bucket permissions:<br>
+Paste the following policy under the bucket permissions:
 
-{<br>
-  "Version": "2012-10-17",<br>
-  "Statement": [<br>
-    {<br>
-      "Sid": "PublicReadGetObject",<br>
-      "Effect": "Allow",<br>
-      "Principal": "*",<br>
-      "Action": "s3:GetObject",<br>
-      "Resource": "arn:aws:s3:::example.com/*"<br>
-    }<br>
-  ]<br>
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PublicReadGetObject",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::example.com/*"
+    }
+  ]
 }
-
+```
 <h4>3. Request SSL Certificate</h4>
 Navigate to AWS Certificate Manager (ACM)<br>
 Select N. Virginia (us-east-1) region<br>
